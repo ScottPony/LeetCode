@@ -16,7 +16,10 @@ namespace LeetCode
             //var maxOnes = FindMaxConsecutiveOnes(new int[]{1, 1, 0, 1, 1, 1});
             var r = FindErrorNums(new int[] { 1, 2, 2, 4 });
         }
-        
+
+        #region Array
+
+        //566. Reshape the Matrix
         private static int[][] MatrixReshape(int[][] mat, int r, int c) {
             int l = mat.Length;
             int w = mat[0].Length;
@@ -40,6 +43,7 @@ namespace LeetCode
             return reshaped;
         }
         
+        //485. Max Consecutive Ones
         private static int FindMaxConsecutiveOnes(int[] nums) {
             var max = 0;
             var cur = 0;
@@ -54,6 +58,7 @@ namespace LeetCode
         
         }
         
+        //645. Set Mismatch
         private static int[] FindErrorNums(int[] nums) {
             var r = new int[2];
         
@@ -72,6 +77,7 @@ namespace LeetCode
             return r;
         }
         
+        //697. Degree of an Array
         private static int FindShortestSubArray(int[] nums) {
             //Dictionary(element, index)
             IDictionary<int ,int> left = new Dictionary<int, int>();
@@ -115,5 +121,28 @@ namespace LeetCode
 
             return answer;
         }
+        
+        //766. Toeplitz Matrix
+        private static bool IsToeplitzMatrix(int[][] matrix) {
+            var m = matrix.Length;
+            var n = matrix[0].Length;
+            var result = true;
+        
+            for(int i = 1; i < m; i++)
+            {
+                for(int j = 0; j < n; j++)
+                {
+                    if(i - 1 >= 0 && j - 1 >= 0)
+                    {
+                        if (matrix[i][j] != matrix[i - 1][j - 1]) result = false;
+                    }
+                }
+            }
+        
+            return result;
+        }
+
+        #endregion
+        
     }
 }
